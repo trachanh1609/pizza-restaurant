@@ -9,3 +9,21 @@
     </div>
   </div>
 </template>
+<style>
+  #home {
+    background: url('../../src/assets/pizza.jpg');
+    height: 800px;
+    padding-top: 150px; 
+  }
+  .background {
+    padding: 20px 0;
+    background: #eee;
+    opacity: 0.8;
+    max-width: 60%;
+    margin: 0 auto;
+  }
+
+  .background h1, h2{
+    margin: 6%;
+  }
+</style>

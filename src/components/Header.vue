@@ -1,6 +1,6 @@
 <template>
   <header class="row">
-    <nav class="navbar navbar-toggleable-md navbar-light">
+    <nav class="navbar navbar-expand-lg navbar-light">
       <a href="/" class="navbar-brand">PIZZA PLANET</a>
       <ul class="navbar-nav">
         <li class="nav-item">
@@ -13,3 +13,10 @@
     </nav>
   </header>
 </template>
+
+<style>
+  header {
+    margin-bottom: 20px;
+  }
+
+</style>
