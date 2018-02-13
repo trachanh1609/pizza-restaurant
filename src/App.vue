@@ -5,6 +5,7 @@
     </div>
     <div class="container">
       <pp-home></pp-home>
+      <pp-menu></pp-menu>
     </div>
     <div class="container">
       <pp-footer></pp-footer>
@@ -16,12 +17,14 @@
 import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
 import Home from './components/Home.vue'
+import Menu from './components/Menu.vue'
 
 export default {
   components: {
     ppHeader: Header,    // pp = PizzaPlanet, our components, not 3rd party components
     ppFooter: Footer,
-    ppHome: Home
+    ppHome: Home,
+    ppMenu: Menu
   }
 }
 </script>
