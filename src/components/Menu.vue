@@ -1,53 +1,58 @@
 <template>
   <div class="row">
     <div class="col-sm-12 col-md-6">
-      <table class="table table-hover">
-        <thead class="thead-default">
-          <tr>
-            <th>Pizza Type</th>
-            <th>Size</th>
-            <th>Price</th>
-            <th>Add to basket</th>
-          </tr>
-        </thead>
-        <tbody v-for="item in getMenuItems">
-          <tr v-for="option in item.options">
-            <td><strong>{{ item.name }}</strong></td>
-            <td>{{option.size}}</td>
-            <td>{{option.price}}</td>
-            <td class="text-center"><button class="btn btn-sm btn-outline-success"
-              type="button"
-              @click="addToBasket(item, option)">+</button></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+
+          <table class="table table-hover">
+            <thead class="thead-default">
+              <tr>
+                <th>Pizza Type</th>
+                <th>Size</th>
+                <th>Price</th>
+                <th>Add to basket</th>
+              </tr>
+            </thead>
+            <tbody v-for="item in getMenuItems">
+              <tr v-for="option in item.options">
+                <td><strong>{{ item.name }}</strong></td>
+                <td>{{option.size}}</td>
+                <td>{{option.price}}</td>
+                <td class="text-center"><button class="btn btn-sm btn-outline-success"
+                  type="button"
+                  @click="addToBasket(item, option)">+</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
     <div class="col-sm-12 col-md-6">
-      <table class="table">
-        <thead class="thead-default">
-          <tr>
-            <th>Quantity</th>
-            <th>Item</th>
-            <th>Total</th>
-          </tr>
-        </thead>
-        <tbody v-for="item in getMenuItems">
-          <tr>
-            <td>
-              <button class="btn btn-sm" type="button">-</button>
-              <span>1-</span>
-              <button class="btn btn-sm" type="button">+</button>
-            </td>
-            <td>Margherita</td>
-            <td>9.43</td>
-          </tr>
-        </tbody>
-      </table>
-      <p>Order total: </p>
-      <button class="btn btn-success btn-block">Place order</button>
+      <div v-if="basket.length > 0">
+          <table class="table">
+            <thead class="thead-default">
+              <tr>
+                <th>Quantity</th>
+                <th>Item</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody v-for="item in basket">
+              <tr>
+                <td>
+                  <button class="btn btn-sm" type="button">-</button>
+                  <span>{{item.quantity}}</span>
+                  <button class="btn btn-sm" type="button">+</button>
+                </td>
+                <td>{{item.name}} {{item.size}}"</td>
+                <td>${{item.price * item.quantity}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>Order total: </p>
+          <button class="btn btn-success btn-block">Place order</button>
+        </div>
+        <div v-else>
+          <p>{{basketText}}</p>
+        </div>
     </div>
-
   </div>
 </template>
 
@@ -56,6 +61,7 @@
     data() {
       return {
         basket:[],
+        basketText: 'Your basket is empty',
         getMenuItems: {
               1: {
                 'name': 'Margherita',
@@ -99,7 +105,7 @@
             name: item.name,
             price: option.price,
             size: option.size,
-            quatity: 1
+            quantity: 1
           })
       }
     }
