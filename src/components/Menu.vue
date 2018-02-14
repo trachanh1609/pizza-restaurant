@@ -22,7 +22,32 @@
         </tbody>
       </table>
     </div>
-    {{basket}}
+
+    <div class="col-sm-12 col-md-6">
+      <table class="table">
+        <thead class="thead-default">
+          <tr>
+            <th>Quantity</th>
+            <th>Item</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody v-for="item in getMenuItems">
+          <tr>
+            <td>
+              <button class="btn btn-sm" type="button">-</button>
+              <span>1-</span>
+              <button class="btn btn-sm" type="button">+</button>
+            </td>
+            <td>Margherita</td>
+            <td>9.43</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>Order total: </p>
+      <button class="btn btn-success btn-block">Place order</button>
+    </div>
+
   </div>
 </template>
 
