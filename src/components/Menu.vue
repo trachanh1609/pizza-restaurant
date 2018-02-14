@@ -4,22 +4,69 @@
       <table class="table table-hover">
         <thead class="thead-default">
           <tr>
+            <th>Pizza Type</th>
             <th>Size</th>
             <th>Price</th>
             <th>Add to basket</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>Margherita</td>
-          </tr>
-          <tr>
-            <td>9"</td>
-            <td>12.95</td>
-            <td><button class="btn btn-sm btnoutline-success" type="button">+</button></td>
+        <tbody v-for="item in getMenuItems">
+          <tr v-for="option in item.options">
+            <td><strong>{{ item.name }}</strong></td>
+            <td>{{option.size}}</td>
+            <td>{{option.price}}</td>
+            <td class="text-center"><button class="btn btn-sm btn-outline-success" type="button">+</button></td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
 </template>
+
+<script>
+  export default {
+    data() {
+      return {
+        getMenuItems: {
+              1: {
+                'name': 'Margherita',
+                'description': 'A delicious tomato based pizza topped with mozzarella',
+                'options': [{
+                  'size': 9,
+                  'price': 6.95
+                }, {
+                  'size': 12,
+                  'price': 10.95
+                }]
+              },
+              2: {
+                'name': 'Pepperoni',
+                'description': 'A delicious tomato based pizza topped with mozzarella and pepperoni',
+                'options': [{
+                  'size': 9,
+                  'price': 7.95
+                }, {
+                  'size': 12,
+                  'price': 12.95
+                }]
+              },
+              3: {
+                'name': 'Ham and Pineapple',
+                'description': 'A delicious tomato based pizza topped with mozzarella, ham and pineapple',
+                'options': [{
+                  'size': 9,
+                  'price': 7.95
+                }, {
+                  'size': 12,
+                  'price': 12.95
+                }]
+              }
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+
+</style>
