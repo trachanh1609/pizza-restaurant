@@ -15,11 +15,14 @@
             <td><strong>{{ item.name }}</strong></td>
             <td>{{option.size}}</td>
             <td>{{option.price}}</td>
-            <td class="text-center"><button class="btn btn-sm btn-outline-success" type="button">+</button></td>
+            <td class="text-center"><button class="btn btn-sm btn-outline-success"
+              type="button"
+              @click="addToBasket(item, option)">+</button></td>
           </tr>
         </tbody>
       </table>
     </div>
+    {{basket}}
   </div>
 </template>
 
@@ -27,6 +30,7 @@
   export default {
     data() {
       return {
+        basket:[],
         getMenuItems: {
               1: {
                 'name': 'Margherita',
@@ -62,6 +66,16 @@
                 }]
               }
         }
+      }
+    },
+    methods: {
+      addToBasket(item, option){
+        this.basket.push({
+            name: item.name,
+            price: option.price,
+            size: option.size,
+            quatity: 1
+          })
       }
     }
   }
