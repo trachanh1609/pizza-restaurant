@@ -5,7 +5,7 @@
     <a href="/" class="navbar-brand">PIZZA PLANET</a>
     <ul class="navbar-nav">
         <router-link tag="li" to="/about/history"><a class="nav-link">History</a></router-link>
-        <router-link tag="li" to="/about/contact"><a class="nav-link">Contact</a></router-link>
+        <router-link tag="li" :to="{name: 'contactLink'}"><a class="nav-link">Contact</a></router-link>
         <router-link tag="li" to="/about/delivery"><a class="nav-link">Delivery</a></router-link>
     </ul>
   </nav>
