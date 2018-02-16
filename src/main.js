@@ -28,6 +28,16 @@ const router = new VueRouter({
   mode: 'history'
 })
 
+// Global Navigation Guards
+router.beforeEach((to, from, next) => {
+  // console.log(to);
+  if(to.path==='/menu') {
+    next();
+  } else {
+    next(false);
+  }
+})
+
 new Vue({
   el: '#app',
   router,
