@@ -7,7 +7,15 @@ import Delivery from './components/Delivery.vue'
 import Admin from './components/Admin.vue'
 
 export const routes = [
-  { path: '/', name: 'homeLink', component: Home},
+  { path: '/',
+    name: 'homeLink',
+    components: {
+        default: Home,
+        'history' : History,
+        'contact' : Contact,
+        'delivery': Delivery
+    }
+  },
   { path: '/menu', name: 'menuLink',component: Menu},
   { path: '/admin', name: 'adminLink',component: Admin},
   { path: '/about', name: 'aboutLink', component: About, children: [
