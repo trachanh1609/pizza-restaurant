@@ -15,9 +15,9 @@
             <th>Remove from Menu</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody v-for="item in getMenuItems">
           <tr>
-            <td>Margherita</td>
+            <td>{{ item.name }}</td>
             <td><button class="btn btn-sm btn-outline-danger">x</button></td>
           </tr>
         </tbody>
@@ -74,6 +74,11 @@ export default {
   data() {
     return {
       name: 'Admin'
+    }
+  },
+  computed: {
+    getMenuItems() {
+      return this.$store.state.menuItems ;
     }
   },
   beforeRouteEnter: (to, from, next) => {
