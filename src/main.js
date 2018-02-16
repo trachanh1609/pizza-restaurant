@@ -25,7 +25,14 @@ const routes = [
 
 const router = new VueRouter({
   routes,  // short for routes: routes
-  mode: 'history'
+  mode: 'history',
+  scrollBehavior (to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { x: 0, y: 0 }
+    }
+  }
 })
 
 // Global Navigation Guards
