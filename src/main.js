@@ -32,9 +32,10 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   // console.log(to);
   if(to.path==='/menu') {
+    alert('Go to menu ?');
     next();
   } else {
-    next(false);
+    next();
   }
 })
 
