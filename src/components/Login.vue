@@ -1,17 +1,22 @@
 <template>
   <div class="row">
-    <form action="">
-      <div class="form-group">
-        <label>Email</label>
-        <input type="email" class="form-control" id="email" placeholder="Enter email"></input>
+    <div>
+      <div>
+        <p>Logged in as: <br> {{currentUser}}</p>
       </div>
-      <div class="form-group">
-        <label>Password</label>
-        <input type="password" class="form-control" id="password" placeholder="Enter Password"></input>
-      </div>
-      <button class="btn btn-outline-success" @click.prevent="signIn()">Sign in</button>
-      <button class="btn btn-outline-danger" @click.prevent="signOut()">Sign out</button>
-    </form>
+      <form action="">
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter email"></input>
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" class="form-control" id="password" placeholder="Enter Password"></input>
+        </div>
+        <button class="btn btn-outline-success" @click.prevent="signIn()">Sign in</button>
+        <button class="btn btn-outline-danger" @click.prevent="signOut()">Sign out</button>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -21,6 +26,17 @@
   // 2. Add a User in Users
 
   import Firebase from 'firebase'
+  import {store} from '../store/store.js'
+
+  Firebase.auth().onAuthStateChanged(function(user){
+    if(user){
+      store.dispatch('setUser', user.email)
+    } else {
+      store.dispatch('setUser', null)
+    }
+  });
+
+
   export default {
     methods: {
       signIn() {
@@ -47,6 +63,11 @@
       },
       test() {
         console.log("this is a test function");
+      }
+    },
+    computed: {
+      currentUser(){
+        return this.$store.getters.currentUser
       }
     }
   }
