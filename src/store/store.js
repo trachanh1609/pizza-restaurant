@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+import * as actions from './actions'
+
 Vue.use(Vuex)
 
 export const store = new Vuex.Store({
@@ -58,13 +60,14 @@ export const store = new Vuex.Store({
       }
     }
   },
-  actions: {
-    setUser({commit}, user) {
-      commit('userStatus', user)
-    }
-    // or parse the whole context, then you can access context.getters, context.state
-    // setUser(context, user) {
-    //   context.commit('userStatus', user)
-    // }
-  }
+  actions
+  // actions: {
+  //   // setUser({commit}, user) {
+  //   //   commit('userStatus', user)
+  //   // }
+  //   // or parse the whole context, then you can access context.getters, context.state
+  //   // setUser(context, user) {
+  //   //   context.commit('userStatus', user)
+  //   // }
+  // }
 })
