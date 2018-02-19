@@ -51,10 +51,11 @@
             </tbody>
           </table>
           <p>Order total: </p>
-          <button class="btn btn-success btn-block">Place order</button>
+          <button class="btn btn-success btn-block" @click="addNewOrder">Place order</button>
         </div>
         <div v-else>
           <p>{{basketText}}</p>
+          <p>{{this.$store.state.orders}}</p>
         </div>
     </div>
   </div>
@@ -94,6 +95,11 @@
         if(item.quantity === 0 ){
           this.removeFromBasket(item);
         }
+      },
+      addNewOrder() {
+        this.$store.commit('addOrder', this.basket)
+        this.basket = []
+        this.basketText = "Thank you, your order has been placed :)"
       }
     }
   }
