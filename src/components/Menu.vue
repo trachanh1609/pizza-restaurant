@@ -11,7 +11,7 @@
                 <th>Add to basket</th>
               </tr>
             </thead>
-            <tbody v-for="item in getMenuItems">
+            <tbody v-for="item in getMenuItems" :key="item['.key']">
               <tr v-for="option in item.options">
                 <td><strong>{{ item.name }}</strong></td>
                 <td>{{option.size}}</td>
@@ -55,7 +55,7 @@
         </div>
         <div v-else>
           <p>{{basketText}}</p>
-          <p>{{this.$store.state.orders}}</p>
+
         </div>
     </div>
   </div>
