@@ -16,7 +16,8 @@ export const store = new Vuex.Store({
   getters: {
     getMenuItems: state => state.menuItems,
     numberOfOrders: state => state.orders.length,
-    currentUser: state => state.currentUser
+    currentUser: state => state.currentUser,
+    getOrders: state => state.orders
   },
   mutations: {
     addOrder: (state, orders) => state.orders.push(...orders),
@@ -31,11 +32,10 @@ export const store = new Vuex.Store({
   },
   actions: {
     setMenuRef : firebaseAction(({ bindFirebaseRef }, { ref }) => {
-      // bunding will automatically unbind any previously bound ref so you
-      // don't need to unbind before binding over an existing bound key
       bindFirebaseRef('menuItems', ref)
-      // it is possible to unbind a bound key at any time
-
+    }),
+    setOrdersRef : firebaseAction(({ bindFirebaseRef }, { ref }) => {
+      bindFirebaseRef('orders', ref)
     })
   }
   // actions: {
