@@ -20,7 +20,8 @@ export const store = new Vuex.Store({
     getOrders: state => state.orders
   },
   mutations: {
-    addOrder: (state, orders) => state.orders.push(...orders),
+    // addOrder: (state, orders) => state.orders.push(...orders),
+    addOrder: (state, orders) => state.orders.push(orders),
     userStatus (state, user) {
       if(user) {
         state.currentUser = user
