@@ -39,6 +39,8 @@ import Footer from './components/Footer.vue'
 // import Menu from './components/Menu.vue'
 // import Admin from './components/Admin.vue'
 
+import {dbMenuRef} from './firebaseConfig'
+
 export default {
   components: {
     ppHeader: Header,    // pp = PizzaPlanet, our components, not 3rd party components
@@ -46,6 +48,9 @@ export default {
     // ppHome: Home,
     // ppMenu: Menu,
     // ppAdmin: Admin
+  },
+  created() {
+    this.$store.dispatch('setMenuRef', dbMenuRef);
   }
 }
 </script>
