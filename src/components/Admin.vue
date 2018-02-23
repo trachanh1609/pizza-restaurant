@@ -49,14 +49,14 @@
             <td>{{orderItems.name}}</td>
             <td>{{orderItems.size}}"</td>
             <td>{{orderItems.quantity}}</td>
-            <td>{{orderItems.price}}</td>
+            <td>{{orderItems.price | currency }}</td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
   </section>
-  
+
   <hr>
   <div class="row">
     <div class="col-sm-12 col-lg-6">

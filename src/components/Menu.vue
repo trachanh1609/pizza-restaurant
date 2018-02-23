@@ -15,7 +15,7 @@
               <tr v-for="option in item.options">
                 <td><strong>{{ item.name }}</strong></td>
                 <td>{{option.size}}</td>
-                <td>{{option.price}}</td>
+                <td>{{option.price | currency }}</td>
                 <td class="text-center"><button class="btn btn-sm btn-outline-success"
                   type="button"
                   @click="addToBasket(item, option)">+</button></td>
@@ -46,11 +46,11 @@
                       @click="increaseQuantity(item)">+</button>
                 </td>
                 <td>{{item.name}} {{item.size}}"</td>
-                <td>${{item.price * item.quantity}}</td>
+                <td>{{item.price * item.quantity | currency }}</td>
               </tr>
             </tbody>
           </table>
-          <p>Order total: {{totalCost}}</p>
+          <p>Order total: {{totalCost | currency }}</p>
           <button class="btn btn-success btn-block" @click="addNewOrder">Place order</button>
         </div>
         <div v-else>
