@@ -1,5 +1,6 @@
 <template>
 <div>
+  <section v-if="currentUser">
   <div class="row">
     <div class="col-sm-12 col-md-6">
       <pp-new-pizza></pp-new-pizza>
@@ -54,7 +55,8 @@
       </table>
     </div>
   </div>
-
+  </section>
+  
   <hr>
   <div class="row">
     <div class="col-sm-12 col-lg-6">
@@ -90,7 +92,8 @@ export default {
     ...mapGetters ([
       'numberOfOrders',
       'getMenuItems',
-      'getOrders'
+      'getOrders',
+      'currentUser'
     ])
   },
   methods:{
