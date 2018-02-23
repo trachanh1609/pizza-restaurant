@@ -11,6 +11,7 @@
       <pp-menu></pp-menu>
       -->
       <router-view></router-view>
+      <global-component></global-component>
     </div>
     <br>
     <div class="container">
