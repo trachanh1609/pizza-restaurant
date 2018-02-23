@@ -50,7 +50,7 @@
               </tr>
             </tbody>
           </table>
-          <p>Order total: </p>
+          <p>Order total: {{totalCost}}</p>
           <button class="btn btn-success btn-block" @click="addNewOrder">Place order</button>
         </div>
         <div v-else>
@@ -74,6 +74,14 @@
       getMenuItems() {
         // return this.$store.state.menuItems ;
         return this.$store.getters.getMenuItems
+      },
+      totalCost () {
+        var totalCost = 0;
+        for( let items in this.basket ) {
+          let individualItem = this.basket[items];
+          totalCost += individualItem.quantity * individualItem.price;
+        }
+        return totalCost
       }
     },
     methods: {
