@@ -12,6 +12,7 @@
       -->
       <router-view></router-view>
       <global-component></global-component>
+      <global-menu-component></global-menu-component>
     </div>
     <br>
     <div class="container">
