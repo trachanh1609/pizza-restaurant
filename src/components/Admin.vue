@@ -18,7 +18,8 @@
         <tbody v-for="item in getMenuItems" :key="item['.key']">
           <tr>
             <td>{{ item.name }}</td>
-            <td><button class="btn btn-sm btn-outline-danger">x</button></td>
+            <td><button class="btn btn-sm btn-outline-danger"
+                @click="removeMenuItem(item['.key'])">x</button></td>
           </tr>
         </tbody>
       </table>
@@ -66,6 +67,7 @@
 import NewPizza from './NewPizza.vue'
 import Login from './Login.vue'
 import { mapGetters } from 'vuex'
+import {dbMenuRef} from '../firebaseConfig'
 
 export default {
   components: {
@@ -89,6 +91,11 @@ export default {
       'getMenuItems',
       'getOrders'
     ])
+  },
+  methods:{
+    removeMenuItem(key) {
+      dbMenuRef.child(key).remove()
+    }
   },
   beforeRouteEnter: (to, from, next) => {
 

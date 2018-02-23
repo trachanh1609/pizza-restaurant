@@ -37,7 +37,10 @@ export const store = new Vuex.Store({
     }),
     setOrdersRef : firebaseAction(({ bindFirebaseRef }, { ref }) => {
       bindFirebaseRef('orders', ref)
-    })
+    }),
+    setUser({commit}, user) {
+       commit('userStatus', user)
+    }
   }
   // actions: {
   //   // setUser({commit}, user) {
