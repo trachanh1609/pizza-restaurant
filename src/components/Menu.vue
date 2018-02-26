@@ -1,7 +1,11 @@
 <template>
   <div class="row">
     <div class="col-sm-12 col-md-6">
-
+      <div class="card">
+        <div class="card-header">
+          <h3>Restaurant Menu</h3>
+        </div>
+        <div class="card-body">
           <table class="table table-hover">
             <thead class="thead-default">
               <tr>
@@ -14,7 +18,7 @@
             <tbody v-for="item in getMenuItems" :key="item['.key']">
               <tr v-for="option in item.options">
                 <td><strong>{{ item.name }}</strong></td>
-                <td>{{option.size}}</td>
+                <td>{{option.size}}"</td>
                 <td>{{option.price | currency }}</td>
                 <td class="text-center"><button class="btn btn-sm btn-outline-success"
                   type="button"
@@ -23,40 +27,50 @@
             </tbody>
           </table>
         </div>
+      </div>
+    </div>
 
     <div class="col-sm-12 col-md-6">
-      <div v-if="basket.length > 0">
-          <table class="table">
-            <thead class="thead-default">
-              <tr>
-                <th>Quantity</th>
-                <th>Item</th>
-                <th>Total</th>
-              </tr>
-            </thead>
-            <tbody v-for="item in basket">
-              <tr>
-                <td>
-                  <button class="btn btn-sm"
-                      type="button"
-                      @click="decreaseQuantity(item)">-</button>
-                  <span>{{item.quantity}}</span>
-                  <button class="btn btn-sm"
-                      type="button"
-                      @click="increaseQuantity(item)">+</button>
-                </td>
-                <td>{{item.name}} {{item.size}}"</td>
-                <td>{{item.price * item.quantity | currency }}</td>
-              </tr>
-            </tbody>
-          </table>
-          <p>Order total: {{totalCost | currency }}</p>
-          <button class="btn btn-success btn-block" @click="addNewOrder">Place order</button>
+      <div class="card">
+        <div class="card-header">
+          <h3>Your basket</h3>
         </div>
-        <div v-else>
-          <p>{{basketText}}</p>
+        <div class="card-body">
+          <div v-if="basket.length > 0">
+              <table class="table">
+                <thead class="thead-default">
+                  <tr>
+                    <th>Quantity</th>
+                    <th>Item</th>
+                    <th>Total</th>
+                  </tr>
+                </thead>
+                <tbody v-for="item in basket">
+                  <tr>
+                    <td>
+                      <button class="btn btn-sm"
+                          type="button"
+                          @click="decreaseQuantity(item)">-</button>
+                      <span>{{item.quantity}}</span>
+                      <button class="btn btn-sm"
+                          type="button"
+                          @click="increaseQuantity(item)">+</button>
+                    </td>
+                    <td>{{item.name}} {{item.size}}"</td>
+                    <td>{{item.price * item.quantity | currency }}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p>Order total: {{totalCost | currency }}</p>
+              <button class="btn btn-success btn-block" @click="addNewOrder">Place order</button>
+            </div>
+            <div v-else>
+              <p>{{basketText}}</p>
 
+            </div>
         </div>
+
+      </div>
     </div>
   </div>
 </template>
@@ -67,7 +81,7 @@
     data() {
       return {
         basket:[],
-        basketText: 'Your basket is empty'
+        basketText: 'Your basket is empty. Feel free to place orders and test the app.'
       }
     },
     computed: {
@@ -109,7 +123,7 @@
         //this.$store.commit('addOrder', this.basket)
         dbOrdersRef.push(this.basket);
         this.basket = []
-        this.basketText = "Thank you, your order has been placed :)"
+        this.basketText = "Thank you, your order has been placed :). Admin can check orders in admin page"
       }
     }
   }

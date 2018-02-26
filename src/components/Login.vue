@@ -2,7 +2,13 @@
   <div class="row">
     <div>
       <div>
-        <p v-if="!currentUser">Please login to continue</p>
+        <p v-if="!currentUser">
+          <strong>Admin only area. Please login to continue.</strong> <br>
+          You can try this account: <br>
+          Email: user@example.com <br>
+          Password: example
+
+        </p>
         <p v-else>Logged in as: <br> {{currentUser}}</p>
       </div>
       <form action="">

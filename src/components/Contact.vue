@@ -1,8 +1,8 @@
 <template>
   <div class="card">
-    <div class="card-block">
-      <h4 class="card-title">Contact</h4>
-      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+    <div class="card-body">
+      <h4 class="card-title text-center">Contact</h4>
+    
       <p class="card-text">
         <address>
           <strong>Pizza Planet</strong><br>

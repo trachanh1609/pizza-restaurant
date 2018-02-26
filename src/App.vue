@@ -11,8 +11,11 @@
       <pp-menu></pp-menu>
       -->
       <router-view></router-view>
+
+      <!-- These components are lazy loading
       <global-component></global-component>
       <global-menu-component></global-menu-component>
+      -->
     </div>
     <br>
     <div class="container">
@@ -31,6 +34,7 @@
     <div class="container">
       <pp-footer></pp-footer>
     </div>
+    <br>
   </div>
 </template>
 
