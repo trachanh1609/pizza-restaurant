@@ -11,6 +11,7 @@ Vue.use(VueRouter);
 const router = new VueRouter({
   routes,  // short for routes: routes
   mode: 'history',
+  base: process.env.NODE_ENV !== 'production' ? '/' : '/portfolio/projects/PizzaRestaurant/',
   scrollBehavior (to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition
